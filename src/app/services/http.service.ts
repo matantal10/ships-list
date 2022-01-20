@@ -13,6 +13,15 @@ export class HttpService {
 
   getShipList(): Observable<ShipIfc[]> {
     return this.http.get('./assets/mock-data.json')
-      .pipe(map( (res: any) => res.records.map((record: { ship: ShipIfc; }) => record.ship)));
+      .pipe(map( (res: any) => res.records.map((record: { ship: ShipIfc; }) => {
+        return <ShipIfc> {
+          country: record?.ship?.country,
+          important: record?.ship?.important,
+          width: record?.ship?.width,
+          callsign: record?.ship?.callsign,
+        }
+      })));
+      // map((record: { ship: ShipIfc; }) => record.ship)));
   }
 }
+
