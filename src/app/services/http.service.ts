@@ -12,14 +12,16 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   getShipList(): Observable<ShipIfc[]> {
+    let i = 1;
     return this.http.get('./assets/mock-data.json')
       .pipe(map( (res: any) => res.records.map((record: { ship: ShipIfc; }) => {
-        return <ShipIfc> {
+        return  {
+          id: i++,
           country: record?.ship?.country,
           important: false, //initial value - server doesn't include property.
           width: record?.ship?.width,
-          callsign: record?.ship?.callsign,
-        }
+          callsign: record?.ship?.callsign
+        } as ShipIfc
       })));
       // map((record: { ship: ShipIfc; }) => record.ship)));
   }

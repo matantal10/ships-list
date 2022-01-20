@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {ShipIfc} from "../../../interfaces/shipIfc";
 import {CommonService} from "../../../services/common.service";
 import {map} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-ships-table',
@@ -9,10 +10,14 @@ import {map} from "rxjs/operators";
   styleUrls: ['./ships-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
+
+
+
 export class ShipsTableComponent implements OnInit {
 
-  @Input() dataSource: any;
-  columns = ['important','country','callsign','width'];
+  @Input() dataSource: Observable<ShipIfc[]> | undefined;
+  public columns = ['important','country','callsign','width'];
   public isNameAsc: boolean | undefined;
 
   constructor(private commonService: CommonService) { }
@@ -27,7 +32,7 @@ export class ShipsTableComponent implements OnInit {
 
   sortTable(col: string) {
     if(col === 'country') {
-      this.dataSource.pipe(map((data: ShipIfc[]) => data.sort(this.sortByName)));
+      // this.dataSource.pipe(map((data: ShipIfc[]) => data.sort(this.sortByName)));
     }
     this.isNameAsc = !this.isNameAsc
   }
@@ -49,6 +54,13 @@ export class ShipsTableComponent implements OnInit {
 
 
   isImportant(entity: ShipIfc) {
+    if (this.dataSource) {
+      let obj = this.dataSource.pipe(map((data: ShipIfc[]) => data.find(value => value.id === entity.id)));
+      console.log('obj: ', obj);
+    }
 
   }
+
+
+
 }
