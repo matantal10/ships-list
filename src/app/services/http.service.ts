@@ -12,7 +12,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   getShipList(): Observable<ShipIfc[]> {
-    return this.http.get('https://run.mocky.io/v3/b22be45d-298d-41a0-831e-28010707b210')
+    return this.http.get('./assets/mock-data.json')
       .pipe(map( (res: any) => res.records.map((record: { ship: ShipIfc; }) => record.ship)));
   }
 }
