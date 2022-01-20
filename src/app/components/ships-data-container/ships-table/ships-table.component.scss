@@ -1,0 +1,52 @@
+
+
+.table-container {
+
+  table  {
+    border-collapse: collapse;
+  }
+
+  thead {
+    display: table; /* to take the same width as tr */
+    width: 100%;
+  }
+
+  //thead, tbody tr {
+  //  display: table;
+  //  width: 100%;
+  //  table-layout: fixed;/* even columns width , fix width of table too*/
+  //}
+
+  tbody {
+    display: block;
+    overflow: auto;
+    overflow-y: scroll;
+   max-height: 380px;
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    tr:focus {
+      background-color: #e3c3c5;
+    }
+  }
+
+  th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  th {
+    text-align: center;
+    height: 20px;
+    vertical-align: bottom;
+  }
+
+
+  td {
+    text-align: center;
+    height: 20px;
+    vertical-align: bottom;
+  }
+}
