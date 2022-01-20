@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { ShipsDataContainerComponent } from './components/ships-data-container/ships-data-container.component';
 import { ShipsTableComponent } from './components/ships-data-container/ships-table/ships-table.component';
 import { ShipDetailsComponent } from './components/ships-data-container/ship-details/ship-details.component';
+import { YesNoPipe } from './pipes/yes-no.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShipsDataContainerComponent,
     ShipsTableComponent,
-    ShipDetailsComponent
+    ShipDetailsComponent,
+    YesNoPipe
   ],
   imports: [
     BrowserModule,

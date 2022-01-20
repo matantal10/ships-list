@@ -16,7 +16,7 @@ export class HttpService {
       .pipe(map( (res: any) => res.records.map((record: { ship: ShipIfc; }) => {
         return <ShipIfc> {
           country: record?.ship?.country,
-          important: record?.ship?.important,
+          important: false, //initial value - server doesn't include property.
           width: record?.ship?.width,
           callsign: record?.ship?.callsign,
         }

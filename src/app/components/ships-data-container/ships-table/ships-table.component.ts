@@ -20,10 +20,6 @@ export class ShipsTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectedShips(i: number) {
-      this.dataSource[i].important = true;
-    //ToDo: ability to select single or multi ships
-  }
 
   getShipDetails(entity: ShipIfc) {
     this.commonService.shipDetails$.next(entity);
@@ -51,4 +47,8 @@ export class ShipsTableComponent implements OnInit {
     }
   }
 
+
+  isImportant(entity: ShipIfc) {
+
+  }
 }

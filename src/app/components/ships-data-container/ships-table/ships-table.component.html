@@ -10,7 +10,7 @@
     <tbody>
       <tr class="row" *ngFor="let entity of dataSource | async; let i = index" (click)="getShipDetails(entity)">
         <td *ngFor="let col of columns">
-          <div *ngIf="col === 'important'; else tableCell"><input type="checkbox" (change)="selectedShips(i)"></div>
+          <div *ngIf="col === 'important'; else tableCell"><input type="checkbox" [checked]="entity[col]" (change)="isImportant(entity)"></div>
           <ng-template #tableCell>{{entity[col]}}</ng-template>
         </td>
       </tr>
